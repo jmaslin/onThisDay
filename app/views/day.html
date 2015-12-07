@@ -5,7 +5,7 @@
 		<div class="col-md-12">
 
 			<h2>
-				<a ng-if="person.link" target="_blank" ng-href="https://en.wikipedia.org{{person.link}}">
+				<a ng-if="person.link" target="_blank" ng-href="https://en.wikipedia.org/wiki/{{person.link}}">
 					{{ person.name }}
 				</a> 
 				<a ng-if="!person.link" target="_blank" ng-href="https://en.wikipedia.org/?curid={{person.pageId}}">
@@ -19,11 +19,19 @@
 		</div>
 
 		<div class="col-md-8">
-			<p class="well" style="line-height: 150%;" ng-bind="person.about"></p>
+			<p class="well" style="line-height: 200%;" ng-bind="person.about"></p>
 		</div>
 
 		<div class="col-md-4">
 			<img class="img-thumbnail" ng-src="{{person.imageUrl}}" />
 		</div>
+
+</div>
+
+<div class="row">
+
+	<div class="col-sm-12 text-center">
+		<button class="btn btn-default" ng-click="refresh()">Refresh</button>
+	</div>
 
 </div>

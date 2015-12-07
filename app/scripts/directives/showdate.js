@@ -7,12 +7,21 @@
  * # showDate
  */
 angular.module('thisDayApp')
-  .directive('showDate', function () {
+  .directive('showDate', function ($location) {
     return {
       template: '<div></div>',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-      	var dateString = moment().format('MMMM Do');
+        var dateString, monthName;
+
+        console.log($location)
+        // if ($routeParams.month && $routeParams.day) {
+          // monthName = moment().month(parseInt($routeParams.month) - 1).format('MMMM');
+          // dateString = monthName + " " + $routeParams.day;
+        // } else {
+      	 dateString = moment().format('MMMM Do');
+        // }
+
         element.text(dateString);
       }
     };

@@ -9,10 +9,9 @@
  */
 angular.module('thisDayApp')
   .controller('DayCtrl', function ($scope, $routeParams, wikiQuery) {
-
-//format=json&action=query&prop=extracts&exintro=&explaintext=&titles=George+Washington
-
+	
   	var dateString, month;
+  	var peopleList;
 
   	if ($routeParams.month && $routeParams.day) {
   		var month = parseInt($routeParams.month);
@@ -39,15 +38,26 @@ angular.module('thisDayApp')
   		}
   	};
 
+  	var refreshPerson = function refreshPerson () {
+  		wikiQuery.personFromList(peopleList).then(function (person) {
+  			$scope.person = person;
+  		});
+  	};
+
   	var init = function init () {
 
-  		wikiQuery.getRandomPerson(dateString, displaySection).then(function (data) {
-  			$scope.person = data;
-  			console.log(data);
+  		wikiQuery.getList(dateString, displaySection).then(function (data) {
+  			peopleList = data;
+  			refreshPerson();
   		});
 
   	};
 
   	init();
+
+  	$scope.refresh = function refresh () {
+  		delete $scope.person;
+  		refreshPerson();
+  	};
 
   });
