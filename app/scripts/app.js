@@ -18,5 +18,14 @@ angular.module('thisDayApp', [
     'firebase',
     'firebase.ref',
     'firebase.auth',
-    'angularMoment'
-  ]);
+    'angularMoment',
+    'ngMaterial'
+  ])
+  .config(function ($sceDelegateProvider) {
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'https://upload.wikimedia.org/**'
+    ]);
+
+  });

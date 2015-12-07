@@ -1,37 +1,42 @@
-<div ng-if="person">
+<md-toolbar>
+  <div class="md-toolbar-tools">
 
-	<div class="row">
+    <md-button class="md-icon-button" aria-label="Previous Day">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </md-button>  
+  	<span flex></span>
+    <h2>
+      <span>{{dateToDisplay}}</span>
+     </h2>
+	    <md-button class="md-icon-button" ng-click="refresh()" aria-label="Refresh Day">
+	      <i class="material-icons">refresh</i>
+	    </md-button>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Next Day">
+      <i class="material-icons">keyboard_arrow_right</i>
+    </md-button>
 
-		<div class="col-md-12">
+  </div>
+</md-toolbar>
 
-			<h2>
-				<a ng-if="person.link" target="_blank" ng-href="https://en.wikipedia.org/wiki/{{person.link}}">
-					{{ person.name }}
-				</a> 
-				<a ng-if="!person.link" target="_blank" ng-href="https://en.wikipedia.org/?curid={{person.pageId}}">
-					{{ person.name }}
-				</a> 				
-				<small>{{ dateToDisplay + ", " + person.year }}</small>
-			</h2>
+<md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
+  <div flex="33" layout="column">
 
-			<hr>
+	<md-card ng-if="person">
+	  <img ng-src="{{person.imageUrl}}" class="md-card-image" alt="">
+	  <md-card-title>
+	    <md-card-title-text layout="column" layout-padding>
+	      <span class="md-display-1">{{person.name}}</span>
+	      <span class="md-subhead">{{ dateToDisplay + ", " + person.year }}</span>
+	    </md-card-title-text>
+	  </md-card-title>
+	  <md-card-content style="padding: 4px 16px;">
+	    <p class="md-body-1" ng-bind="person.about"></p>
+	  </md-card-content>
+	  <md-card-actions layout="row" layout-align="end center">
+	  	<md-button class="md-primary" ng-href="https://en.wikipedia.org/wiki/{{person.link}}" target="_blank">Learn More</md-button>
+		</md-card-actions>
+	</md-card>
 
-		</div>
-
-		<div class="col-md-8">
-			<p class="well" style="line-height: 200%;" ng-bind="person.about"></p>
-		</div>
-
-		<div class="col-md-4">
-			<img class="img-thumbnail" ng-src="{{person.imageUrl}}" />
-		</div>
-
-</div>
-
-<div class="row">
-
-	<div class="col-sm-12 text-center">
-		<button class="btn btn-default" ng-click="refresh()">Refresh</button>
-	</div>
-
-</div>
+  </div>
+</md-content>

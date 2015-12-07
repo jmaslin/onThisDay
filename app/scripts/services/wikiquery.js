@@ -266,7 +266,7 @@ angular.module('thisDayApp')
         titles: decodeURIComponent(person.link),
         prop: 'extracts',
         exinfo: '',
-        exsentences: '4',
+        exsentences: '3',
         explaintext: '',
         format: 'json',
         callback: 'JSON_CALLBACK',
