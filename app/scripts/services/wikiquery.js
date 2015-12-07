@@ -263,7 +263,7 @@ angular.module('thisDayApp')
 
       var queryParams = {
         action: 'query',
-        titles: encodeURIComponent(person.link),
+        titles: decodeURIComponent(person.link),
         prop: 'extracts',
         exinfo: '',
         exsentences: '4',
@@ -304,16 +304,12 @@ angular.module('thisDayApp')
               payload.imageUrl = data;
             }
 
-            console.log("Resolve person.");
             deferred.resolve(payload);
           })
 
         } else {
-          console.log(pageData);
-          deferred.reject(); // Failing here bcause invalid characters in some names (HOW TO HANDLE?)
+          deferred.reject(); 
         }
-
-       
         
       });
 
