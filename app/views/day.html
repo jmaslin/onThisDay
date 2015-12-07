@@ -1,0 +1,29 @@
+<div ng-if="person">
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<h2>
+				<a ng-if="person.link" target="_blank" ng-href="https://en.wikipedia.org{{person.link}}">
+					{{ person.name }}
+				</a> 
+				<a ng-if="!person.link" target="_blank" ng-href="https://en.wikipedia.org/?curid={{person.pageId}}">
+					{{ person.name }}
+				</a> 				
+				<small>{{ dateToDisplay + ", " + person.year }}</small>
+			</h2>
+
+			<hr>
+
+		</div>
+
+		<div class="col-md-8">
+			<p class="well" style="line-height: 150%;" ng-bind="person.about"></p>
+		</div>
+
+		<div class="col-md-4">
+			<img class="img-thumbnail" ng-src="{{person.imageUrl}}" />
+		</div>
+
+</div>
