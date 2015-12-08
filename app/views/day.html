@@ -1,46 +1,53 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
+<div layout="column">
+	<md-toolbar>
+	  <div class="md-toolbar-tools">
 
-    <md-button class="md-icon-button" aria-label="Previous Day" ng-click="previousDay()">
-      <i class="material-icons">keyboard_arrow_left</i>
-    </md-button>  
-  	<span flex></span>
-    <h2>
-      <span>{{dateToDisplay}}</span>
-     </h2>
-	    <md-button class="md-icon-button" ng-click="refresh()" aria-label="Refresh Day">
-	      <i class="material-icons">refresh</i>
+	    <md-button class="md-icon-button" aria-label="Previous Day" ng-click="previousDay()">
+	      <i class="material-icons">keyboard_arrow_left</i>
+	    </md-button>  
+	  	<span flex></span>
+	    <h2>
+	      <span>{{dateToDisplay}}</span>
+	     </h2>
+		    <md-button class="md-icon-button" ng-click="refresh()" aria-label="Refresh Day">
+		      <i class="material-icons">refresh</i>
+		    </md-button>
+	    <span flex></span>
+	    <md-button class="md-icon-button" aria-label="Next Day" ng-click="nextDay()">
+	      <i class="material-icons">keyboard_arrow_right</i>
 	    </md-button>
-    <span flex></span>
-    <md-button class="md-icon-button" aria-label="Next Day" ng-click="nextDay()">
-      <i class="material-icons">keyboard_arrow_right</i>
-    </md-button>
 
-  </div>
-</md-toolbar>
+	  </div>
+	</md-toolbar>
 
-<md-content class="md-padding" layout="row" layout-wrap layout-align="center start">
-  <div flex="33" layout="column">
+	<md-content flex class="md-padding" layout="row" layout-fill layout-wrap layout-align="center start" style="background-image: url('images/landscape.svg'); background-repeat: no-repeat; background-size: 100%; height: 100vh;">
 
-	<md-card ng-if="person" class="ng-trans ng-trans-fade">
-	  <img ng-src="{{person.imageUrl}}" class="md-card-image" alt="">
-	  <md-card-title>
-	    <md-card-title-text layout="column" layout-padding>
-	      <span class="md-display-1">{{person.name}}</span>
-	      <span class="md-subhead">{{ dateToDisplay + ", " + person.year }}</span>
-	    </md-card-title-text>
-	  </md-card-title>
-	  <md-card-content style="padding: 4px 16px;">
-	    <p class="md-body-1" ng-bind="person.about"></p>
-	  </md-card-content>
-	  <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-icon-button md-accent" aria-label="More">
-				<i class="material-icons">cake</i>
-      </md-button>
-      <span flex></span>
-	  	<md-button class="md-primary" ng-href="https://en.wikipedia.org/wiki/{{person.link}}" target="_blank">Learn More</md-button>
-		</md-card-actions>
-	</md-card>
+		<div flex="25" ng-if="person.imageUrl" class="ng-trans ng-trans-fade">
+			<md-whiteframe flex layout-fill class="md-whiteframe-4dp">
+				<img ng-src="{{person.imageUrl}}" style="max-width: 100%; margin-top: 8px;" alt="">
+			</md-whiteframe>
+		</div>
 
-  </div>
-</md-content>
+	  <div flex="40" layout="column" ng-if="person" class="ng-trans ng-trans-fade">
+			<md-card>
+			  <md-card-title>
+			    <md-card-title-text layout="column" layout-padding>
+			      <span class="md-display-1">{{person.name}}</span>
+			      <span class="md-subhead">{{ dateToDisplay + ", " + person.year }}</span>
+			    </md-card-title-text>
+			  </md-card-title>
+			  <md-card-content style="padding: 4px 16px;">
+			    <p class="md-body-1" ng-bind="person.about"></p>
+			  </md-card-content>
+			  <md-card-actions layout="row" layout-align="end center">
+		      <md-button class="md-icon-button md-accent" aria-label="More">
+						<i class="material-icons">cake</i>
+		      </md-button>
+		      <span flex></span>
+			  	<md-button class="md-primary" ng-href="https://en.wikipedia.org/wiki/{{person.link}}" target="_blank">Learn More</md-button>
+				</md-card-actions>
+			</md-card>
+
+	  </div>
+	</md-content>
+</div>

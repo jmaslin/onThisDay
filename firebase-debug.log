@@ -34,3 +34,21 @@
 [info] i  preparing dist directory for upload...
 [debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/firebase/thisDayWiki/uploads/-K4z6H2sKwEP-qK0rIQo?token=XXX&fileCount=18&message= 
 [debug] <<< HTTP RESPONSE 200
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] Platform:     linux
+[debug] Node Version: v5.0.0
+[debug] Time:         Mon Dec 07 2015 21:13:44 GMT-0500 (EST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/thisDayWiki/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/firebase/thisDayWiki/token?token=XXX 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'thisDayWiki'...
+[info] 
+[info] i  deploying hosting
+[info] i  preparing dist directory for upload...
+[debug] >>> HTTP REQUEST PUT https://deploy.firebase.com/firebase/thisDayWiki/uploads/-K4zMRIPZYYu7AeeZkFK?token=XXX&fileCount=18&message= 
+[debug] <<< HTTP RESPONSE 200
