@@ -8,7 +8,7 @@
  * Controller of the thisDayApp
  */
 angular.module('thisDayApp')
-  .controller('DayCtrl', function ($scope, $routeParams, wikiQuery) {
+  .controller('DayCtrl', function ($scope, $routeParams, wikiQuery, $timeout) {
 	
   	var dateString, month, monthName, day;
   	var peopleList;
@@ -42,7 +42,10 @@ angular.module('thisDayApp')
 
   	var refreshPerson = function refreshPerson () {
   		wikiQuery.personFromList(peopleList).then(function (person) {
-  			$scope.person = person;
+  			// Timeout to improve UI/UX 
+  			$timeout(function () {
+  				$scope.person = person;
+  			}, 250);
   		});
   	};
 
