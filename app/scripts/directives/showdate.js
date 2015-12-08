@@ -14,7 +14,6 @@ angular.module('thisDayApp')
       link: function postLink(scope, element, attrs) {
         var dateString, monthName;
 
-        console.log($location)
         // if ($routeParams.month && $routeParams.day) {
           // monthName = moment().month(parseInt($routeParams.month) - 1).format('MMMM');
           // dateString = monthName + " " + $routeParams.day;
