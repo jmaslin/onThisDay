@@ -10,12 +10,14 @@
 angular.module('thisDayApp')
   .controller('DayCtrl', function ($scope, $routeParams, wikiQuery) {
 	
-  	var dateString, month;
+  	var dateString, month, monthName, day;
   	var peopleList;
 
   	if ($routeParams.month && $routeParams.day) {
-  		var month = parseInt($routeParams.month);
-  		var monthName = moment().month(month - 1).format('MMMM');
+  		month = parseInt($routeParams.month);
+  		monthName = moment().month(month - 1).format('MMMM');
+  		day = $routeParams.day;
+
   		dateString = monthName + "_" + $routeParams.day;
   	} else {
   		$routeParams.month = moment().format('MM');
@@ -45,6 +47,9 @@ angular.module('thisDayApp')
   	};
 
   	var init = function init () {
+  		
+  		$scope.dateToDisplay = dateString.replace('_' , ' ');
+  		delete $scope.person;
 
   		wikiQuery.getList(dateString, displaySection).then(function (data) {
   			peopleList = data;
@@ -58,6 +63,16 @@ angular.module('thisDayApp')
   	$scope.refresh = function refresh () {
   		delete $scope.person;
   		refreshPerson();
+  	};
+
+  	$scope.previousDay = function previousDay () {
+  		dateString = moment(dateString, 'MMMM_D').subtract(1, 'days').format('MMMM_D');
+  		init();
+  	};
+
+  	$scope.nextDay = function  nextDay () {
+  		dateString = moment(dateString, 'MMMM_D').add(1, 'days').format('MMMM_D');
+  		init();
   	};
 
   });
