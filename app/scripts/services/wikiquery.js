@@ -162,6 +162,21 @@ angular.module('thisDayApp')
       return deferred.promise;
     };
 
+    var isImageNameValid = function isImageNameValid (imageName) {
+
+      var textToFilter = ['svg', 'ogg'];
+      var isValid = true;
+
+      textToFilter.forEach(function (text) {
+        if (imageName.toLowerCase().indexOf(text) > -1) {
+          isValid = false;
+          return;
+        }
+      });
+      
+      return isValid;
+    };
+
     var getImageFromPage = function getImageFromPage (person) {
 
       var deferred = $q.defer();
@@ -211,12 +226,12 @@ angular.module('thisDayApp')
                   return;
                 }
 
-                if (!imageName && image.title.indexOf('svg') === -1) {
+                if (!imageName && isImageNameValid(image.title)) {
                   imageName = image.title;
                 }
 
                 nameArray.forEach(function (namePart) {
-                  if (image.title.indexOf(namePart) > -1) {
+                  if (image.title.indexOf(namePart) > -1 && isImageNameValid(image.title)) {
                     imageName = image.title;
                     continueToCheck = false;
                     return;

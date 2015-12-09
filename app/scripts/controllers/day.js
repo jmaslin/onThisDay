@@ -10,6 +10,8 @@
 angular.module('thisDayApp')
   .controller('DayCtrl', function ($scope, $routeParams, wikiQuery, $timeout) {
 	
+	  $scope.myDate = new Date();
+
   	var dateString, month, monthName, day;
   	var peopleList;
 
@@ -52,6 +54,8 @@ angular.module('thisDayApp')
   	var init = function init () {
   		
   		$scope.dateToDisplay = dateString.replace('_' , ' ');
+    	$scope.date = dateString;
+
   		delete $scope.person;
 
   		wikiQuery.getList(dateString, displaySection).then(function (data) {
